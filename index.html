@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    #music-player {
+      width: 400px;
+      text-align: center;
+      background-color: #2c3e50;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    audio {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #play-pause-icon::before {
+      content: '\f04b'; 
+    }
+
+    #stop-icon::before {
+      content: '\f04d';
+    }
+
+    #next-icon::before {
+      content: '\f051'; 
+    }
+  </style>
+</head>
+<body>
+
+<div id="music-player">
+  <img id="album-cover" src="./music/WhatsApp-Image-2022-10-09-at-8.40.47-PM.jpeg" alt="Album Cover">
+  <audio id="audio" controls preload="auto">
+    <source id="audio-source" src="./music/ennai_thalata_music.mp3" type="audio/mp3">
+  </audio>
+  <button id="play-pause">
+    <i id="play-pause-icon" class="fas fa-play"></i>
+  </button>
+  <button id="stop">
+    <i id="stop-icon" class="fas fa-stop"></i>
+  </button>
+  <button id="next">
+    <i id="next-icon" class="fas fa-forward"></i>
+  </button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
+<script>
+    const audio = document.getElementById('audio');
+    const playPauseButton = document.getElementById('play-pause');
+    const stopButton = document.getElementById('stop');
+    const nextButton = document.getElementById('next');
+    const albumCover = document.getElementById('album-cover');
+    const audioSource = document.getElementById('audio-source');
+  
+    let currentTrack = 0;
+    const tracks = [
+      { title: 'Track 1', src: './music/ennai_thalata_music.mp3', cover: './music/WhatsApp-Image-2022-10-09-at-8.40.47-PM.jpeg' },
+      { title: 'Track 2', src: './music/Idhu Enna Mayam Flute BGM', cover: './music/blue-background.jpg' },
+    ];
+  
+    playPauseButton.addEventListener('click', togglePlayPause);
+    stopButton.addEventListener('click', stopAudio);
+    nextButton.addEventListener('click', playNextTrack);
+  
+    function togglePlayPause() {
+      if (audio.paused) {
+        audio.play();
+        playPauseButton.innerHTML = '<i id="play-pause-icon" class="fas fa-pause"></i>';
+      } else {
+        audio.pause();
+        playPauseButton.innerHTML = '<i id="play-pause-icon" class="fas fa-play"></i>';
+      }
+    }
+  
+    function stopAudio() {
+      audio.pause();
+      audio.currentTime = 0;
+      playPauseButton.innerHTML = '<i id="play-pause-icon" class="fas fa-play"></i>';
+    }
+  
+    function playNextTrack() {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      audio.pause(); 
+      updateAudioSource();
+      audio.load();
+      audio.play(); 
+    }
+  
+    function updateAudioSource() {
+      const track = tracks[currentTrack];
+      audioSource.src = track.src;
+      albumCover.src = track.cover;
+    }
+  
+    updateAudioSource();
+  </script>
+
+    
+  </body>
+  </html>
