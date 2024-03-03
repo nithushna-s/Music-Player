@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tracks = [
     { title: 'Katchi Sera', src: './music/Katchi Sera.mp3', cover: './music/3cb358d3af7b40368fed2f66193f70f0_464_464.jpg' },
     { title: 'Kesariya Brahmastra', src: './music/Kesariya Brahmastra 128 Kbps.mp3', cover: './music/kesariya-song-from-brahmastra-out-1.jpg' },
-    { title: 'ennai_thalata', src: './music/ennai_thalata_music.mp3', cover: './music/vijay.jpeg' },
+    { title: 'ennai_thalata', src: './music/Ennai-Thalatta-Varuvala-Ilaiyaraaja.mp3', cover: './music/vijay.jpeg' },
     { title: 'En Rojaa Neeye', src: './music/En Rojaa Neeye Kushi 128 Kbps.mp3', cover: './music/maxresdefault .jpg' },
   ];
 
