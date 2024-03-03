@@ -70,8 +70,8 @@ button:hover {
   content: '\f051'; 
 }
 img#album-cover {
-  width: 300px; 
-  height: 300px; 
+  width: 350px; 
+  height: 350px; 
   border-radius: 50%; 
   margin-bottom: 20px;
   transform-origin: center center;
